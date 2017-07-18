@@ -22,3 +22,19 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+ul.todolist{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+ul.todolist li{
+  padding: 10px;
+  box-shadow: inset 0 -1px 1px #999;
+  margin-bottom: 10px;
+  border-radius: 5px;
+}
+
+ul.todolist li span{
+  line-height: 34px;
+}

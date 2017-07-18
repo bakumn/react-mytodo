@@ -1,19 +1,34 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+
+import Footer from "./components/layout/Footer";
+import Nav from "./components/layout/Nav";
+
+import Favorites from "./pages/Favorites";
+import Todos from "./pages/Todos";
+import Settings from "./pages/Settings";
+
 import './App.css';
+
 
 class App extends Component {
   render() {
+    const { location } = this.props;
+    const containerStyle = {
+      marginTop: "60px"
+    };
     return (
-      <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
+      <Router>
+        <div className="Main">
+             <Nav location={location} />
+           <div className="container" style={containerStyle}>
+               <Route exact path="/" component={Todos}/>
+               <Route path="/favorites" component={Favorites}/>
+               <Route path="/settings" component={Settings}/>
+             </div>
+             <Footer/>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      </Router>
     );
   }
 }
