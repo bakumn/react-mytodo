@@ -5,12 +5,7 @@ import dispatcher from "../dispatcher";
 class TodoStore extends EventEmitter {
     constructor() {
         super();
-        this.setState( {todos:[]});
-        let _self = this;
-        axios("http://localhost:6060/ingredients").then((res) => {
-            _self.setState({todos: res.data});
-            console.log(res.data);
-        });
+        this.todos = [];
     }
 
     createTodo(text) {
@@ -23,6 +18,10 @@ class TodoStore extends EventEmitter {
     }
 
     getAll() {
+        axios("http://localhost:6060/ingredients").then((res) => {
+            console.log("got the data!", res.data);
+            dispatcher.dispatch({type: "RECEIVE_TODOS", todos:res.data});
+        });
         return this.todos;
     }
 

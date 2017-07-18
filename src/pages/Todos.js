@@ -8,6 +8,7 @@ import TodoStore from "../stores/TodoStore";
 export default class Todos extends React.Component {
   constructor() {
     super();
+    TodoActions.reloadTodos();
     this.getTodos = this.getTodos.bind(this);
     this.state = {
       todos: TodoStore.getAll(),

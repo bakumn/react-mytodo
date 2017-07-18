@@ -16,9 +16,7 @@ export function deleteTodo(id) {
 }
 
 export function reloadTodos() {
-    dispatcher.dispatch({type: "FETCH_TODOS"});
-    axios("http://localhost:6060/ingredients").then((res) => {
-        console.log("got the data!", res.data);
-        dispatcher.dispatch({type: "RECEIVE_TODOS", todos:res.data});
+    dispatcher.dispatch({
+        type: "FETCH_TODOS"
     });
 }
